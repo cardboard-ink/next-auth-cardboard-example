@@ -1,10 +1,10 @@
 import NextAuth from "next-auth";
-import Guilded from "next-auth-cardboard";
+import {CardBoard, CardBoardProfile} from "next-auth-cardboard";
 
 const handler = NextAuth({
   secret: process.env.SESSION_SECRET!,
   providers: [
-    Guilded({
+    CardBoard({
       clientId: process.env.CARDBOARD_CLIENT_ID!,
       clientSecret: process.env.CARDBOARD_CLIENT_SECRET!,
     }),
@@ -14,8 +14,10 @@ const handler = NextAuth({
       console.log(session, token);
       return session;
     },
-    async signIn({ user }) {
-      console.log(user);
+    async signIn({user, account, profile}) {
+      const realUser = user;
+      const typedProfile = profile as CardBoardProfile;
+      console.log(realUser, account, typedProfile);
       return true;
     },
   },
