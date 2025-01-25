@@ -20,7 +20,7 @@ export default function Navbar() {
             <div className="flex gap-2 items-center">
                 <div className="text-white font-semibold">{session.user.name}</div>
               <Image
-                src={session.user.avatar ? `https://photobox.cardboard.ink/user/avatar/${session.user.id}` : "https://cdn3.emoji.gg/emojis/9757-porfile.png"}
+                src={`https://photobox.cardboard.ink/user/avatar/${session.user.id}`}
                 alt="User Avatar"
                 width={40}
                 height={40}
